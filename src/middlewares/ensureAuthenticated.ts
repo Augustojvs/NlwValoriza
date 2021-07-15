@@ -15,7 +15,7 @@ export function ensureAuthenticated(req: Request, res: Response, next: NextFunct
   const [, token] = authToken.split(" ")
 
   try { 
-    const { sub } = verify(token, "395f39b8fdd36db0b098bfcf702170f5") as IPayload
+    const { sub } = verify(token, process.env.VALIDATE_TOKEN) as IPayload
 
     req.user_id = sub;
     
